@@ -113,7 +113,7 @@ function MainHeader() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            LPT
+            Panacea
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
