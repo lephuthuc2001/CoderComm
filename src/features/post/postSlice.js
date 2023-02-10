@@ -122,3 +122,36 @@ export const sendPostReaction =
       toast.error(error.message);
     }
   };
+
+export const deletePost = (userId, postID) => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
+  try {
+    const response = await apiService.delete(`/posts/${postID}`);
+    console.log(userId);
+    toast.success("Delete post successfully");
+    dispatch(getPosts({ userId }));
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    toast.error(error.message);
+  }
+};
+
+export const updatePost =
+  (postId, userId, { content, image }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      // upload image to cloudinary
+      const imageUrl = await cloudinaryUpload(image);
+      const response = await apiService.put(`/posts/${postId}`, {
+        content,
+        image: imageUrl,
+      });
+      dispatch(getPosts({ userId }));
+      toast.success("Edit successfully");
+      dispatch(getCurrentUserProfile());
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };

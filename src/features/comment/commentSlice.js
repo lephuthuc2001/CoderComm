@@ -119,3 +119,15 @@ export const sendCommentReaction =
       toast.error(error.message);
     }
   };
+export const deleteComment = (postId, commentId) => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
+  try {
+    const response = await apiService.delete(`/comments/${commentId}`);
+
+    toast.success("Delete comment successfully");
+    dispatch(getComments({ postId }));
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    toast.error(error.message);
+  }
+};

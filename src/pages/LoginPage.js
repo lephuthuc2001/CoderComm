@@ -40,6 +40,7 @@ function LoginPage() {
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
+  
   const {
     handleSubmit,
     reset,

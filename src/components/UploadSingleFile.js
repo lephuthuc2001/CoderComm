@@ -19,7 +19,14 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
   "&:hover": { opacity: 0.72, cursor: "pointer" },
 }));
 
-function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
+function UploadSingleFile({
+  error = false,
+  img,
+  file,
+  helperText,
+  sx,
+  ...other
+}) {
   const {
     getRootProps,
     getInputProps,
@@ -57,14 +64,23 @@ function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
           sx={{ height: "100%" }}
         >
           <AddAPhotoRoundedIcon />
-          <Typography
-            gutterBottom
-            variant="body2"
-            sx={{ color: "#637381" }}
-            textAlign="center"
-          >
-            Drop or Select Image
-          </Typography>
+          {img && (
+            <img
+              src="https://via.placeholder.com/500"
+              alt=""
+              style={{ width: "100%" }}
+            />
+          )}
+          {!img && (
+            <Typography
+              gutterBottom
+              variant="body2"
+              sx={{ color: "#637381" }}
+              textAlign="center"
+            >
+              Drop or Select Image
+            </Typography>
+          )}
         </Stack>
 
         {file && (

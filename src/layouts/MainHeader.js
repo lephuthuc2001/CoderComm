@@ -40,6 +40,7 @@ function MainHeader() {
   };
 
   const menuId = "primary-search-account-menu";
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -112,7 +113,7 @@ function MainHeader() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            CoderComm
+            LPT
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
@@ -121,7 +122,7 @@ function MainHeader() {
               onClick={handleProfileMenuOpen}
               src={user.avatarUrl}
               alt={user.name}
-              sx={{ width: 32, height: 32 }}
+              sx={{ width: 32, height: 32, cursor: "pointer" }}
             />
           </Box>
         </Toolbar>

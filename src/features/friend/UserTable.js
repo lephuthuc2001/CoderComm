@@ -26,12 +26,14 @@ function UserTable({ users }) {
       targetUserId: targetUser._id,
       friendship: targetUser.friendship,
     };
+
     return {
       status: <FriendStatus {...props} />,
       action: <ActionButton {...props} />,
     };
   };
 
+  const displayedUsers = users;
   return (
     <Box sx={{ overflowX: "auto" }}>
       <TableContainer sx={{ minWidth: 800 }}>
@@ -56,7 +58,7 @@ function UserTable({ users }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((user) => {
+            {displayedUsers.map((user) => {
               const { status, action } = getActionsAndStatus(user);
               return (
                 <TableRow key={user._id} hover>
